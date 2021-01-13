@@ -1,2 +1,2 @@
 # shotpro
-pagina de fotógrafos
+ pagina web de fotografia 
