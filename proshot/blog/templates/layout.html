@@ -14,8 +14,8 @@
   <!-- Bootstrap core CSS -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-   <link href="{%static 'css/clean-blog.min.css' %}" rel="stylesheet">
+  <!-- Custom styles for this Template
+   <link href="{%static 'css/clean-blog.min.css' %}" rel="stylesheet"> -->
   <link href="{% static 'css/blog-home.css' %}" rel="stylesheet">
   <link href="{%static 'vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet" type="text/css">
  
@@ -62,30 +62,29 @@
                         </a>
                         </li>
                         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Login
-        </a>
+          <a class="btn btn-danger"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <strong>Login</strong></a>
           <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
-          <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-           
-                <h5 class="card-title text-center">Ingresar</h5>
+          
+          <div class="dropdown-menu dropdown-menu-right animate slideIn " aria-labelledby="navbarDropdown">
+            
+                <h5 class=" text-center">Ingresar</h5>
                 
-                <form class="form-signin px-4 py-3">
-                  <div class="form-label-group ">
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                    <label for="inputEmail">Email address</label>
+                <form class="form-signin " >
+                  <div class="mb-3">
+                    <label for="exampleDropdownFormEmail1" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
                   </div>
-
-                  <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                    <label for="inputPassword">Password</label>
+                  <div class="mb-3">
+                    <label for="exampleDropdownFormPassword1" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
                   </div>
 
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">Remember password</label>
+                    <label class="custom-control-label" for="customCheck1">Recordar contraseña</label>
                   </div>
-                  <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                  <button class="btn btn-lg btn-success btn-block text-uppercase" type="submit">Go!</button>
                 </form>
               
           </div>
