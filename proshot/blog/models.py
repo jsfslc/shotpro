@@ -80,27 +80,13 @@ class Person(models.Model):
     
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    picture = models.ImageField(blank=True)
+    profilePicture = models.ImageField(upload_to='images/',blank=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(Person, on_delete=models.CASCADE)
+    #author = models.ForeignKey(Person, on_delete=models.CASCADE)
 
     def __str__(self):
-      return sef.title
-#    
-#    def get_absolute_url(self):
-#        return reverse('blog_post_detail', args=[self.slug])#
-#
-#    def save(self, *args, **kwargs):
-#        if not self.slug:
-#            self.slug = slugify(self.title)
-#        super(Post, self).save(*args, **kwargs)
-#        
-#    class Meta:
-#        ordering = ['created_on']
-#        # acá me sale error 
-#        def __unicode__(self):
-#            return self.title
+      return self.title
 
 class PostPicture(models.Model):
   post = models.ForeignKey(Post, on_delete=models.CASCADE)
