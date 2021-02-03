@@ -63,10 +63,21 @@
                         </a>
                         </li>
                
-        <li class="nav-item">
+       
+        {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="{% url 'backoffice' %}">Dashboard</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </li>
+        {% else %}
+         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
         </li>
-
+        {% endif %}
          
         </ul>
       </div>
