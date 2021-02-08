@@ -24,8 +24,7 @@ def login_view(request):
       username = request.POST.get("username")
       password = request.POST.get("password")
 
-      print(username)
-      print(password)     
+       
       user = authenticate(request, username = username, password= password)
 
       if user is not None:
@@ -37,6 +36,16 @@ def login_view(request):
         messages.info(request, 'Username or password is incorrect')
 
     return render(request, "login.html")
+
+
+  #testing pagina
+def testing_website(request):
+    return render(request,"trying.html")
+
+  
+def workwithus_view(request):
+    return render(request,"workwithus.html")
+
 
     
 
