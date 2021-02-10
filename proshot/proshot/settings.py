@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog',
+    'backoffice',
     'multiselectfield',
     'rest_framework',
     'django.contrib.admin',

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{%load static %}
+{% block head %}
+          <link href="{%static 'css/spiral.css'%}" rel="stylesheet" type="text/css">
+         <link href="{%static 'css/login2.css'%}" rel="stylesheet" type="text/css">
+{% endblock %}
+{%block body%}
+<body>
+ 
+  <div class="container">
+  
+    <div class="row">
+        <canvas id="canvas"></canvas>
+    
+    </div>
+  </div>
+ 
+
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+ <script  src="{%static 'js/spiral.js'%}"></script>
+{%endblock%}
