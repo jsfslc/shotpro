@@ -1,17 +1,19 @@
 from django.shortcuts import render, get_object_or_404
-
+from rest_framework import generics
+from rest_framework import permissions
+from .serializers import PostSerializer, PostPictureSerializer
 from .models import Post, PostPicture
 
-def detail_view(request, id):
-  post = get_object_or_404(Post, id=id)
-  photos = PostPicture.objects.filter(post=post)
-  return render(request, 'detail.html', {
-    'post':post,
-    'photos':photos
-  })
+# ViewSets define the view behavior.
+class PostList(generics.ListCreateAPIView):
+  queryset = Post.objects.all().order_by('-created_on')
+  serializer_class = PostSerializer
+  permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-# Create your views here.
-def index(request):
-    
-    posts = Post.objects.all()
-    return render(request, "index.html", {'posts':posts}) 
+  def perform_create(self, serializer):
+    serializer.save(owner=self.request.user)
+  #return render(request, "index.html", {'posts':posts}) 
+
+class PostDetail(generics.RetrieveAPIView):
+  queryset = Post.objects.all()
+  serializer_class = PostSerializer

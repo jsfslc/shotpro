@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.text import slugify
     
+# When creating new model add to serializers.py
+
 LENGUAGES_PERSON = (
   ('es', 'Español'),
   ('en', 'Inglés'),
@@ -83,10 +85,13 @@ class Post(models.Model):
     profilePicture = models.ImageField(upload_to='images/',blank=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    #author = models.ForeignKey(Person, on_delete=models.CASCADE)
+    author = models.ForeignKey(Person, related_name='posts', on_delete=models.CASCADE, default=0)
+
+    class Meta:
+      ordering = ['created_on']
 
     def __str__(self):
-      return self.title
+      return self.title  
 
 class PostPicture(models.Model):
   post = models.ForeignKey(Post, on_delete=models.CASCADE)
