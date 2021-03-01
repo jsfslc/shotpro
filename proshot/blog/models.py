@@ -82,10 +82,9 @@ class Person(models.Model):
     
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    profilePicture = models.ImageField(upload_to='images/',blank=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(Person, related_name='posts', on_delete=models.CASCADE, default=0)
+    author = models.ForeignKey(Person, related_name='posts', on_delete=models.CASCADE)
 
     class Meta:
       ordering = ['created_on']
@@ -94,7 +93,7 @@ class Post(models.Model):
       return self.title  
 
 class PostPicture(models.Model):
-  post = models.ForeignKey(Post, on_delete=models.CASCADE)
+  post = models.ForeignKey(Post, related_name='pictures', on_delete=models.CASCADE)
   image = models.ImageField(upload_to='images/')
 
   def __str__(self):

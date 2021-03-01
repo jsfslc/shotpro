@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post, PostPicture
+from .models import Post, PostPicture, Person
 
 class PostPictureAdmin(admin.StackedInline):
   model=PostPicture
@@ -16,4 +16,8 @@ class PostAdmin(admin.ModelAdmin):
 class PostPictureAdmin(admin.ModelAdmin):
   pass
 
+@admin.register(Person)
+class PersonAdmin(admin.ModelAdmin):
+  class Meta:
+    model=Person
 # Register your models here.

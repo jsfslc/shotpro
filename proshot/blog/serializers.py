@@ -4,7 +4,7 @@ from .models import Person, Post, PostPicture
 
 class PersonSerializer(serializers.ModelSerializer):
   posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-  
+
   class Meta:
     model = Person
     fields = (
@@ -21,27 +21,11 @@ class PersonSerializer(serializers.ModelSerializer):
       'idioma',
       'categoriasEspecialidad',
       'disponibilidad',
-      'status'
+      'status',
+      'posts'
     )
 
-class PostSerializer(serializers.ModelSerializer):
-  author = PersonSerializer(required=False, read_only=True)
-  serializers.ImageField(use_url=True, required=False, allow_null=True)
-  
-  class Meta:
-    model = Post
-    fields = (
-      'id',
-      'author',
-      'title',
-      'profilePicture',
-      'content',
-      'created_on'
-    )
-
-class PostPictureSerializer(serializers.ModelSerializer):
-  author = serializers.ReadOnlyField(source='author.username')
-
+class PostPictureSerializer(serializers.ModelSerializer): 
   class Meta:
     model = PostPicture
     fields = (
@@ -49,3 +33,19 @@ class PostPictureSerializer(serializers.ModelSerializer):
       'post',
       'image'
     )
+    
+class PostSerializer(serializers.ModelSerializer):
+  author = serializers.ReadOnlyField(source='author.first_name')
+  pictures =  serializers.SlugRelatedField(many=True, read_only=True, slug_field='image')
+  
+  class Meta:
+    model = Post
+    fields = (
+      'id',
+      'author',
+      'title',
+      'content',
+      'created_on',
+      'pictures'
+    )
+

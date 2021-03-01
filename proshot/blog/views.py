@@ -1,50 +1,72 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from rest_framework import generics
-from rest_framework import permissions
+from rest_framework import permissions, viewsets, mixins
+from rest_framework.renderers import TemplateHTMLRenderer, JSONRenderer
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .serializers import PostSerializer, PostPictureSerializer
 from .models import Post, PostPicture
 
-# ViewSets define the view behavior.
-class PostList(generics.ListCreateAPIView):
-  queryset = Post.objects.all().order_by('-created_on')
-  serializer_class = PostSerializer
-  permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+#ViewSets define the view behavior.
+class PostList(APIView):
+  """
+  A viewset for viewing and editing user instances.
+  """
+  renderer_classes = [TemplateHTMLRenderer]
+  template_name = 'index.html'
+  ordering_fields = ['created_on']
 
-  def perform_create(self, serializer):
-    serializer.save(owner=self.request.user)
-  #return render(request, "index.html", {'posts':posts}) 
+  def get(self, request):
+    queryset = Post.objects.all()
+    serializer = PostSerializer(queryset, many=True)
+    return Response({'posts': serializer.data})
 
+class PostDetail(APIView):
+  """
+  A viewset for viewing and editing user instances.
+  """
+  renderer_classes = [TemplateHTMLRenderer]
+  template_name = 'detail.html'
 
-class PostDetail(generics.RetrieveAPIView):
+  def get(self, request, id):
+    post = get_object_or_404(Post, id=id)
+    serializer = PostSerializer(post)
+    return Response({'serializer': serializer, 'post': post})
+
+  def post(self, request, id):
+    post = get_object_or_404(Post, id=id)
+    serializer = PostSerializer(post, data=request.data)
+    if not serializer.is_valid():
+      return Response({'serializer': serializer, 'post': post})
+    serializer.save()
+    return redirect('index')
+
+class PostCreate(mixins.CreateModelMixin):
   queryset = Post.objects.all()
-  serializer_class = PostSerializer
+  serializer = PostSerializer
 
-# Create your views here.
-def index(request):
-    
-    posts = Post.objects.all()
-    return render(request, "index.html", {'posts':posts}) 
-
+  def post(self, request, *args, **kwargs):
+    return self.create(request, *args, **kwargs)
 
 def login_view(request):
-    if request.method == "POST":
-      username = request.POST.get("username")
-      password = request.POST.get("password")
+  if request.method == "POST":
+    username = request.POST.get("username")
+    password = request.POST.get("password")
 
-       
-      user = authenticate(request, username = username, password= password)
+      
+    user = authenticate(request, username = username, password= password)
 
-      if user is not None:
-        login(request, user)
-        return redirect("backoffice")
+    if user is not None:
+      login(request, user)
+      return redirect("backoffice")
         
-      else:
-        print("user doesnt exist")
-        messages.info(request, 'Username or password is incorrect')
+    else:
+      print("user doesnt exist")
+      messages.info(request, 'Username or password is incorrect')
 
-    return render(request, "login.html")
+  return render(request, "login.html")
 
 
   #testing pagina
