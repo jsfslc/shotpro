@@ -1,11 +1,9 @@
 {% extends 'layout.html' %}
-{% load rest_framework %}
 {% block body %}
-<h1>Post - {{ post.title }}</h1>
 
-<form action="{% url 'post-detail' pk=post.pk %}" method="POST">
+<form method="POST">
     {% csrf_token %}
-    {% render_form serializer %}
+    {{ form.as_p }}
     <input type="submit" value="Save">
 </form>
 {% endblock %}

@@ -48,4 +48,3 @@ class PostSerializer(serializers.ModelSerializer):
       'created_on',
       'pictures'
     )
-
