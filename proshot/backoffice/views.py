@@ -13,3 +13,7 @@ def index(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("login"))
+
+def profile(request):
+    print("profile")
+    return render(request, "profile.html")

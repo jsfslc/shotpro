@@ -1,12 +1,41 @@
 {% extends "layout.html" %}
 {% load rest_framework %}
+ {% block head %}
+  
+{% endblock %}
 {%block body%}
 
   <!-- Page Content -->
   <div class="container">
-    <h1 class="my-4">Page Heading
-      <small>Secondary Text</small>
-    </h1>
+
+    
+    <div class = "row">
+      <nav class="navbar navbar-light my-4">
+        <div class="container-fluid justify-content-start">
+        
+          <span class="navbar-text"> <h4> <strong> Mostrar</h4></strong></span>
+          <div class="dropdown dropend">
+            <!--<button id="dropdownMenuCategory" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-secondary dropdown-toggle" >
+              Todo
+               </button>
+            <span class="caret"></span>-->
+             <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"  aria-haspopup="true">
+              Todo
+            </a>
+            <span class="caret"></span>
+           
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Categoria 1</a></li>
+              <li><a class="dropdown-item" href="#">Categoria dos</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+   
+      
+      <!-- filtrado-->
+    
+    </div>
     <div class="row">
       <!-- Blog Entries Column -->
       </br>
@@ -33,22 +62,16 @@
           {% for post in posts %}
          
             <div class="card border-0 " >
-              <a href="{% url 'detail' id=post.id %}"><img class="card-img-top " src="{{post.pictures.0.url}}" alt=""></a>
+              <a href="{% url 'detail' id=post.id %}" class="stretched-link"><img class="card-img-top " src="{{post.pictures.0.url}}" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="{% url 'detail' id=post.id %}" class="stretched-link">{{post.title}}</a>
-                </h4>
+                  {{post.title}}</h4>
                 <p class="card-text">{{post.content}}</p>
               </div>
             </div>
          
           {% endfor %}
         </div>
-         
-         
-        
-      
-       
       
 
     </div>  

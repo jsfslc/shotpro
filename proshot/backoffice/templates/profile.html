@@ -1,0 +1,37 @@
+{% extends "layout-backoffice.html" %}
+{%block body%}
+<div class ="container-fluid  p-0">
+    <h1 class ="h3 mb-3"> Perfil </h1>
+    <div = "row  ">
+        <div class = "col-3">
+            <div class = "card ">
+                <div class = "card-header">
+                    <h5 class = "card-tittle mb-0">Profile Setting</h5>
+                </div><!---->
+                <div class = "list-group list-group-flush" role ="tablist">
+                    <a class = "list-group-item list-group-item-action active" data-toggle ="list" href="#account" role="tab" aria-selected="true">
+                    Cuenta
+                    </a>
+                     <a class = "list-group-item list-group-item-action" data-toggle ="list" href="#password" role="tab" aria-selected="false">
+                    Cambiar contraseña
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class = "col-3">
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id = "account" role = "tabpanel">
+                           <div class = "card ">
+                                1
+                            </div>
+                    </div>
+                    <div class="tab-pane fade " id = "password" role = "tabpanel">
+                            <div class = "card ">
+                                2
+                            </div>
+                    </div>
+                </div>
+        </div>
+    </div>    
+</div>
+{%endblock%}
