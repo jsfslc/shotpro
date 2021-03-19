@@ -1,0 +1,22 @@
+{% extends "layout-backoffice.html" %}
+{%block body%}
+
+  {% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+      <h1> Actualizar Post </h1>
+      <br></br>
+      <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Actualizar</button>
+        </form>
+      </div>
+    {% else %}
+      Hay que redirigir a home o last page
+    {% endif %}
+  {% endif %}
+
+
+
+{% endblock %}

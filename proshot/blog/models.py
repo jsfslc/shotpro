@@ -81,8 +81,8 @@ class Person(models.Model):
     status = models.IntegerField()
     
 class Post(models.Model):
-    title = models.CharField(max_length=255)
-    content = models.TextField()
+    title = models.CharField(max_length=50)
+    content = models.TextField(max_length=255)
     created_on = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(Person, related_name='posts', on_delete=models.CASCADE)
 
@@ -98,6 +98,7 @@ class Post(models.Model):
 class PostPicture(models.Model):
   post = models.ForeignKey(Post, related_name='pictures', on_delete=models.CASCADE)
   image = models.ImageField(upload_to='images/')
+  image_name = models.CharField(max_length=55, default='')
 
   def __str__(self):
-    return self.post.title
+    return self.image_name
