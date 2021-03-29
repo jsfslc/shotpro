@@ -14,14 +14,15 @@
 
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-
+    {%block script%}
+    {%endblock%}
     
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-               <a class="navbar-brand" href="{% url 'index' %}">
-          <img src="{%static 'img/logoblanco1500x500.png '%}"  width="150" height="50" alt="">
-        </a>
+            <a class="navbar-brand" href="{% url 'backoffice:backoffice' %}">
+                <img src="{%static 'img/logoblanco1500x500.png '%}"  width="150" height="50" alt="">
+            </a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" ><i class="fas fa-bars"></i></button>
             <!-- Navbar Search
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -48,12 +49,12 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <a class="nav-link" href="{% url 'backoffice' %}">
+                            <a class="nav-link" href="{% url 'backoffice:backoffice' %}">
                                 <div class="sb-nav-link-icon"><i class="bi-gear"></i></div>
                                 Dashboard
                             </a>
                             <div class="sb-sidenav-menu-heading">Perfil</div>
-                            <a class="nav-link" href="{% url 'profile' %}">
+                            <a class="nav-link" href="{% url 'backoffice:profile' %}">
                                 <div class="sb-nav-link-icon"><i class="bi-gear"></i></div>
                                 Configuración
                             </a>
@@ -66,10 +67,6 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Ver post
                             </a>
-                          
-                           
-                           
-                           
                             
                             <div class="sb-sidenav-menu-heading">Usuarios</div>
                             <a class="nav-link" href="charts.html">
@@ -86,7 +83,7 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
-                <main class ="content">
+                <main role="main">
                     {%block body%}
                     {%endblock%}
                   <!--  

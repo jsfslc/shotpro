@@ -1,0 +1,71 @@
+{% extends "base/layout.html" %}
+{% load widget_tweaks %}
+{%load static %}
+{% block head %}
+
+{% endblock %}
+{%block body%}
+{%if request.user.is_authenticated%}
+<script>
+    window.location.href ='{%url "blog:index" %}';
+</script>
+{%endif%}
+<body>
+
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <h2>Trabaja con Nosotros</h2>
+                <p class="lead">Vivamus eleifend quam dignissim magna eleifend viverra. Mauris malesuada metus velit, at volutpat arcu elementum quis. Donec elementum lacus ante, eget dignissim felis tincidunt pharetra. In ac euismod augue, eu aliquam purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </p>
+            </div>
+            <div class="col">
+                <h4 class="mb-3">Información Personal</h4>
+                {%if form.errors%}
+                <P> Corrije los siguiente errores:</p>
+                    {%for field in form%}
+                        {%if field.errors%}
+                            <div class ='alert alert-primary' role='alert'>
+                                {{field.label}} : {{field.errors|striptags}}
+                            </div>
+                        {%endif%}
+                    {%endfor%}
+                {%endif%}
+                <form method = "POST">
+                    {% csrf_token %}
+                    <div class="row g-3">
+
+                        <div class="col-12">
+                            <label for="username" class="form-label">Username</label>
+                            {% render_field form.username class="form-control" placeholder="username" name="username" type="user" id="username"  %}
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email</label>
+                            {% render_field form.email class="form-control" placeholder="email" name="email" type="email" id="email"  %}
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <label for="password" class="form-label">Contraseña</label>
+                            {% render_field form.password class="form-control" placeholder="password" name="password" id="password"  %}
+                            
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="password2" class="form-label">Reingrese contraseña</label>
+                            {% render_field form.password2 class="form-control" placeholder="Reingrese password" name="password2"  id="password2"  %}
+                            
+                        </div>
+                        
+                    <button class="w-100 btn btn-dark btn-lg" type="submit">Enviar Solicitud</button>
+                </form>
+
+            </div>
+
+
+
+        </main>
+    </div>
+
+</body>
+
+{%endblock%}

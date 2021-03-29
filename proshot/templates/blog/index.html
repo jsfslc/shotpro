@@ -1,0 +1,107 @@
+{% extends "base/layout.html" %}
+{% load rest_framework %}
+ {% block head %}
+  
+{% endblock %}
+{%block body%}
+
+  <!-- Page Content -->
+  <div class="container">
+
+    
+    <div class = "row">
+      <nav class="navbar navbar-light my-4">
+        <div class="container-fluid justify-content-start">
+        
+          <span class="navbar-text"> <h4> <strong> Mostrar</h4></strong></span>
+          <div class="dropdown dropend">
+            <!--<button id="dropdownMenuCategory" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-secondary dropdown-toggle" >
+              Todo
+               </button>
+            <span class="caret"></span>-->
+             <a class="nav-link dropdown-toggle h4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"  aria-haspopup="true">
+              Todo
+            </a>
+            <span class="caret"></span>
+           
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Categoria 1</a></li>
+              <li><a class="dropdown-item" href="#">Categoria dos</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+   
+      
+      <!-- filtrado-->
+    
+    </div>
+    <div class="row">
+      <!-- Blog Entries Column -->
+      </br>
+      <!--
+        <h1 class="my-4">Page Heading
+          <small>Secondary Text</small>
+        </h1>
+      -->
+        <!-- Blog Post 
+        {% for post in posts %}
+          <div class="card mb-3">
+            <img class="card-img-top" src="{{post.pictures.0.url}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{post.title}}</h5>
+              <p class="card-text">{{post.content}}</p>
+              <a href="{% url 'blog:detail' id=post.id %}" class="btn btn-primary">Read More &rarr;</a>
+              <p class="card-text">
+                <small class="text-muted">{{post.created_on}}</small>
+              </p>
+            </div>
+          </div>
+        {% endfor %}-->
+        <div class="card-columns">
+          {% for post in posts %}
+         
+            <div class="card border-0 " >
+              <a href="{% url 'blog:detail' id=post.id %}" class="stretched-link"><img class="card-img-top " src="{{post.pictures.0.url}}" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  {{post.title}}</h4>
+                <p class="card-text">{{post.content}}</p>
+              </div>
+            </div>
+         
+          {% endfor %}
+        </div>
+      
+
+    </div>  
+    <!-- /.row -->
+     <!-- Pagination -->
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+      </li>
+  </ul>
+
+  </div>
+  <!-- /.container -->
+  
+{%endblock%}

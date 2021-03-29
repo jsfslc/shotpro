@@ -93,7 +93,7 @@ class Post(models.Model):
       return self.title
 
     def get_absolute_url(self):
-      return reverse('detail', args=(str(self.id)))
+      return reverse('blog:detail', args=(str(self.id)))
 
 class PostPicture(models.Model):
   post = models.ForeignKey(Post, related_name='pictures', on_delete=models.CASCADE)

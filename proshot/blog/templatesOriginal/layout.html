@@ -115,9 +115,36 @@
 
 
   <!-- Footer -->
-  <footer class="py-5 ">
-    <div class="container">
-      <p class="m-0 text-center ">Copyright &copy; Your Website 2020</p>
+  <footer class="py-5 text-center">
+    <div class="container p-4">
+     <!-- Section: Social media -->
+          <section class="mb-4">
+           <!-- Instagram -->
+               <!-- LOgO-->
+              <a class="btn btn-floating m-1" href="{% url 'index' %}">
+                <img src="{%static 'img/logonegroa1500x500.png '%}"  width="150" height="50" alt="">
+              </a>
+              <a href="#" class=" btn btn-floating m-1"  style="font-size: 12px;" role="button">
+                <i class="fab fa-instagram icons-spins  fa-2x" id="insta"  ></i>
+              </a>
+              <!-- Twitter -->
+              <a href="#"  class=" btn btn-floating m-1" role="button">
+                <i class="fab fa-twitter icons-spins fa-lg" style="color: #00acee"></i>
+              </a>
+              <!-- facebook -->
+              <a href="#" class=" btn btn-floating m-1"  role="button">
+                <i class="fab  fa-facebook-f  icons-spins  fa-lg" style="color: #4267B2" ></i>
+               </a>
+             
+               
+          </section>
+          <!-- Section: Social media -->
+          <!-- Copyright -->
+            <div class="text-center p-3" >
+              © 2021 Copyright:
+              <a href="{% url 'index' %}">Proshot</a>
+            </div>
+            <!-- Copyright -->
     </div>
     <!-- /.container -->
   </footer>
