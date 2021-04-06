@@ -5,14 +5,14 @@
       <ul>
       {% for post in object_list %}
         <li>
-          <a href="{% url 'detail_post' post.pk %}">
+          <a href="{% url 'backoffice:detail_post' post.pk %}">
             {{ post.title }}
           </a>
           - {{ post.created_on }} 
           {% if user.is_authenticated %}
             {% if user.id == post.author.id %}
-              <a href="{% url 'update_post' post.pk %}"> Editar </a>
-              <a href="{% url 'delete_post' post.pk %}"> Eliminar </a>
+              <a href="{% url 'backoffice:update_post' post.pk %}"> Editar </a>
+              <a href="{% url 'backoffice:delete_post' post.pk %}"> Eliminar </a>
             {% endif %}
           {% endif %}
         </li>

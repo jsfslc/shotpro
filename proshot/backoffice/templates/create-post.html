@@ -4,11 +4,39 @@
   <h1>Crea un nuevo post</h1>
   <br></br>
   <div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Post</button>
+    <form id="post_form" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for hidden in postForm.hidden_fields %}
+          {{ hidden }}
+      {% endfor %}
+   
+      {% for field in postForm %}
+          {{ field }} <br />
+      {% endfor %}
+   
+      {{ formset.management_form }}
+      {% for form in formset %}
+          {{ form }}
+      {% endfor %}
+
+      <button class="btn btn-secondary">Post</button>
     </form>
   </div>
 
 {% endblock %}
+
+<script>
+  document.getElementById("add_image").onclick=function (ev) {
+    var image=document.getElementById("images");
+    var newInput=document.createElement("input");
+    newInput.type="file";
+    newInput.name="file[]";
+
+    var br=document.createElement("br");
+    var br1=document.createElement("br");
+
+    image.appendChild(newInput);
+    image.appendChild(br);
+    image.appendChild(br);
+  }
+</script>

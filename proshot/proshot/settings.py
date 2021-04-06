@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     'rest_framework',
     'widget_tweaks',
+    'ckeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

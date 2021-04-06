@@ -39,9 +39,6 @@ class PostList(APIView):
     serializer = PostSerializer(queryset, many=True)
     return Response({'posts': serializer.data})
 
-
-
-
 class PostDetail(APIView):
   """
   A viewset for viewing and editing user instances.
@@ -54,10 +51,6 @@ class PostDetail(APIView):
     serializer = PostSerializer(post)
     return Response({'serializer': serializer, 'post': post})
 
-class CreatePost(CreateView):
-  template_name = 'createPost.html'
-  model = Post
-  fields = '__all__'
 
 """
 def login_view(request):

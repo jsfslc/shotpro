@@ -15,16 +15,25 @@ class PostForm(forms.ModelForm):
       'content': forms.Textarea(attrs={'class': 'form-control'}),
     }
 
-PostPicturesFormSet = inlineformset_factory(Post, 
-  PostPicture,
-  fields=('image', 'image_name'),
-  extra=1,
-  max_num=1,
-  widgets={
-    'image_name':
-    forms.TextInput(attrs={'placeholder': 'Image name'})
-  }
-)
+class PicturesForm(forms.ModelForm):
+  class Meta:
+    model = PostPicture
+    fields = ('image','image_name')
+
+    widget = {
+      'pictures': forms.ImageField(label='image')
+    }
+
+# PostPicturesFormSet = inlineformset_factory(Post, 
+#   PostPicture,
+#   fields=('image', 'image_name'),
+#   extra=1,
+#   max_num=1,
+#   widgets={
+#     'image_name':
+#     forms.TextInput(attrs={'placeholder': 'Image name'})
+#   }
+# )
 
 
 class UserLoginForm(AuthenticationForm):
