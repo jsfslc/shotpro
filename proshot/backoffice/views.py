@@ -132,3 +132,4 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'delete-post.html'
     success_url = reverse_lazy('posts')
+

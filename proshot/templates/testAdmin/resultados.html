@@ -1,0 +1,64 @@
+{%extends 'layout-backoffice.html'%}
+{%load static%}
+{%load widget_tweaks %}
+{%block head%}
+
+{%endblock%}
+
+{%block body%}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Resultados</h1>
+
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+           Resultados de los usuarios 
+        </div>
+        <div class="card-body">
+                <table class="table data-table table-bordered " id="dataResultados" >
+                    <thead>
+                        <tr>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Puntaje obtenido</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Puntaje obtenido</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </tfoot>                    
+                    <tbody>
+                    {%for resultado in feedback%}
+                        <tr>
+                            <!--<td>{{resultado.user.all.}}</td>-->
+                            <td>{{ resultado.user.first_name }}</td>
+                            <td>{{ resultado.user.last_name }}</td>
+                            <td>{{resultado.totalscore}}</td>
+                            <td><i class="fas fa-file-download"></i> <i class="fas fa-eye"></i></td>
+                        </tr>
+                    {%endfor%}
+                    </tbody>
+                </table>
+           
+        </div>
+    </div>
+</div>
+{%endblock%}
+{%block js%}
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        $('#dataResultados').DataTable({
+            responsive : true,
+            autoWidth: false
+        });
+    });
+</script>
+{%endblock%}

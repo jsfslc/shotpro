@@ -1,0 +1,27 @@
+{%extends 'layout-backoffice.html'%}
+{%load static%}
+{%load widget_tweaks %}
+{%block head%}
+
+{%endblock%}
+{%block body%}
+<div class="container py-4">
+    <div class="row ">
+        
+        <div class="col-8 col-lg-8 col-xl-8 position-absolute top-50 start-50 translate-middle">
+               <div class="h-100 p-5 text-white bg-dark rounded-4">
+                    <h2>{{test.name_test}}</h2>
+                    <p>Acá va una breve descripción del test. Tienes un tiempo de {{test.timer}} para rendir el test.</p>
+                    {%if validarTest%}
+                        <a  href="{% url 'test1:testFotografico' 1 %}" class="btn btn-outline-info" type="button"><i class="fas fa-play"></i> Rendir test</a>
+                    {%else%}
+                         <button  href="{% url 'test1:testFotografico' 1 %}" class="btn btn-outline-info" type="button" disabled><i class="fas fa-play"></i> Rendir test</button>
+                            <div class="col-auto">
+                                <p class="text-info h4">Test en mantención!</p>             
+                            </div>                                                            
+                    {%endif%}
+                </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

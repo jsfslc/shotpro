@@ -24,4 +24,5 @@ urlpatterns = [
   path('',include("blog.url")),
   path('backoffice/',include('django.contrib.auth.urls')), 
   path('backoffice/',include("backoffice.urls")), 
+  path('backoffice/test/',include("test1.urls")), 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
